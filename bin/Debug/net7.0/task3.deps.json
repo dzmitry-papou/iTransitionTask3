@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "task3/1.0.0": {
+        "dependencies": {
+          "SeriesOne.CORE": "1.0.8"
+        },
+        "runtime": {
+          "task3.dll": {}
+        }
+      },
+      "SeriesOne.CORE/1.0.8": {
+        "runtime": {
+          "lib/netstandard2.0/Core.dll": {
+            "assemblyVersion": "1.0.8.0",
+            "fileVersion": "1.0.8.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "task3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SeriesOne.CORE/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dIETN/By9DFpSdm7etk+bxhm8Oi+3mwg6gxH0/MuwD9fS2SFuK6c1Aq7DKAI0kI8TjRHqUMhN6cM9rr7q4Cfsg==",
+      "path": "seriesone.core/1.0.8",
+      "hashPath": "seriesone.core.1.0.8.nupkg.sha512"
+    }
+  }
+}

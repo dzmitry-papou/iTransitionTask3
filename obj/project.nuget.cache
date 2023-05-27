@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QX6BURGaks+W8ct6AONyRzIUskYmcS4cDBQS+0TUHfXMdUiwTmnqyLf6f9VPvK451nZrUAAkQWthiMBm6LJ2JA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dzmitry\\source\\repos\\task3\\task3\\task3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dzmitry\\.nuget\\packages\\seriesone.core\\1.0.8\\seriesone.core.1.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
