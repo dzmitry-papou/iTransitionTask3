@@ -19,8 +19,8 @@ namespace task3
             Random random = new();
             int optionKey = random.Next(1, rule.Options.Keys.Count + 1);
             move = rule.Options[Convert.ToString(optionKey)];
-            key = GetSha256hash();
-            hash = GetSha256hash(this.key + move);
+            key = GenerateKey(32);
+            hash = GetSha256hash(key + move);
         }
 
         public void ShowHash()
@@ -45,10 +45,12 @@ namespace task3
             return GetStringFromByteArray(result);
         }
 
-        private static string GetSha256hash()
+        private static string GenerateKey(int size)
         {
-            Byte[] result = SHA256.HashData(RandomNumberGenerator.GetBytes(64));
-            return GetStringFromByteArray(result);
+            using var generator = RandomNumberGenerator.Create();
+            var key = new byte[size];
+            generator.GetBytes(key);
+            return GetStringFromByteArray(key);
         }
 
         private static string GetStringFromByteArray(Byte[] result)
