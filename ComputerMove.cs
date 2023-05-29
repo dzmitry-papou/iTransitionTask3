@@ -20,7 +20,7 @@ namespace task3
             int optionKey = random.Next(1, rule.Options.Keys.Count + 1);
             move = rule.Options[Convert.ToString(optionKey)];
             key = GenerateKey(32);
-            hash = GetSha256hash(key + move);
+            hash = HMACHASH(move, key);
         }
 
         public void ShowHash()
@@ -38,11 +38,13 @@ namespace task3
             Console.WriteLine("HMAC key: {0}", key);
         }
 
-        private static string GetSha256hash(string value)
+        private static string HMACHASH(string str, string key)
         {
-            Encoding enc = Encoding.UTF8;
-            Byte[] result = SHA256.HashData(enc.GetBytes(value));
-            return GetStringFromByteArray(result);
+            byte[] bkey = Encoding.Default.GetBytes(key);
+            using var hmac = new HMACSHA256(bkey);
+            byte[] bstr = Encoding.Default.GetBytes(str);
+            var bhash = hmac.ComputeHash(bstr);
+            return BitConverterToString(bhash);
         }
 
         private static string GenerateKey(int size)
@@ -50,15 +52,12 @@ namespace task3
             using var generator = RandomNumberGenerator.Create();
             var key = new byte[size];
             generator.GetBytes(key);
-            return GetStringFromByteArray(key);
+            return BitConverterToString(key);
         }
 
-        private static string GetStringFromByteArray(Byte[] result)
+        private static string BitConverterToString(byte[] b)
         {
-            StringBuilder Sb = new();
-            foreach (Byte b in result)
-                Sb.Append(b.ToString("x2"));
-            return Sb.ToString();
+            return BitConverter.ToString(b).Replace("-", string.Empty).ToLower();
         }
     }
 }

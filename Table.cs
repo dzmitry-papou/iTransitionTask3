@@ -53,10 +53,10 @@
 
         private string GetHeader(Rule rule)
         {
-            string header = "| PC Moves";
+            string header = "| v PC\\User >";
             for (int i = 0; i < firstTableWidth; i++)
             {
-                if (i < firstTableWidth - 8)
+                if (i < firstTableWidth - 11)
                 {
                     header += " ";
                 }
@@ -100,7 +100,7 @@
             foreach (var variable in rule.OptionList)
             {
                 row += " ";
-                string result = rule.GetResult(item, variable);
+                string result = rule.GetResult(variable, item);
                 row += result;
                 if (result.Length == 3)
                 {
@@ -117,7 +117,7 @@
         private static int GetFirstTableWidth(Rule rule)
         {
             string longest = rule.OptionList.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);
-            return longest.Length > 8 ? longest.Length : 8;
+            return longest.Length > 11 ? longest.Length : 11;
         }
     }
 }
